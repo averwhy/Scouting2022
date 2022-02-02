@@ -44,33 +44,10 @@ return (
           </option>
         </Input>
       </FormGroup>
-      <FormGroup>
-        <Label for="exampleSelectMulti">
-          Select Multiple
-        </Label>
-        <Input
-          id="exampleSelectMulti"
-          multiple
-          name="selectMulti"
-          type="select"
-        >
-          <option>
-            1
-          </option>
-          <option>
-            2
-          </option>
-          <option>
-            3
-          </option>
-          <option>
-            4
-          </option>
-          <option>
-            5
-          </option>
-        </Input>
-      </FormGroup>
+      <br /> {/* cool spacer */}
+      <h3>
+        Autonomous
+      </h3>
       <FormGroup>
         <Label for="exampleText">
           Text Area

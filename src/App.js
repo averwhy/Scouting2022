@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import { Route, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
@@ -11,6 +10,9 @@ import Matches from './pages/Matches';
 import Teams from './pages/Teams';
 
 function App() {
+  useEffect(() => {
+    document.title = "138 Scouting";  
+  }, []);
   return (
     <div>
       <BrowserRouter>
