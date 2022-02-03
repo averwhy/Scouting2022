@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav, NavItem} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faHome, faUserCircle, faAddressBook, faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUserCircle, faAddressBook, faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 const tabs = [{
     route: "/home",
     icon: faHome,
