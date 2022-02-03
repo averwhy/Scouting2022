@@ -26,24 +26,7 @@ const Navigation = (props) => {
     <div>
       <nav className="navbar navbar-expand-md navbar-light sticky-top" 	role="navigation">
         <div className="container-fluid">
-            <a className="navbar-brand" href="/home">Scouting 2022 - Entropy 138</a>
-            <Nav className="ml-auto">
-            <NavItem>
-                <NavLink to="/entry" className="nav-link">
-                  Data Entry
-                </NavLink>
-              </NavItem>
-            <NavItem>
-                <NavLink to="/matches" className="nav-link">
-                  Matches
-                </NavLink>
-              </NavItem>
-            <NavItem>
-                <NavLink to="/teams" className="nav-link">
-                  Teams
-                </NavLink>
-              </NavItem>
-            </Nav>
+            <a className="navbar-brand" href="/">Entropy 138 Scouting</a>
         </div>
       </nav>
         {props.children}

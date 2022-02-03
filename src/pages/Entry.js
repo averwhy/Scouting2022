@@ -1,108 +1,143 @@
 import React from 'react';
-import {Form, FormGroup, Label, Input, Button, FormText, Container} from "reactstrap";
+import {Form, FormGroup, Label, Input, Button, FormText, Container, Col} from "reactstrap";
 
 const Entry = (props) => {
 return (
   <Container>
     <Form>
-      <FormGroup>
-        <Label for="matchNum">
+      <h3>
+        Scouting Entry
+      </h3>
+      <FormGroup row>
+        <Label for="matchNum" sm={2}>
           Match Number
         </Label>
-        <Input
-          id="matchNum"
-          name="match"
-          placeholder="e.g. 1"
-          type="number"
-        />
+        <Col sm={10}>
+          <Input
+            id="matchNum"
+            name="match"
+            placeholder="e.g. 1"
+            type="number"
+          
+          />
+        </Col>
       </FormGroup>
-      <FormGroup>
-        <Label for="teamNum">
+      <FormGroup row>
+        <Label for="teamNum" sm={2}>
           Match Number
         </Label>
-        <Input
-          id="teamNum"
-          name="team"
-          placeholder="e.g. 2"
-          type="number"
-        />
+        <Col sm={10}>
+          <Input
+            id="teamNum"
+            name="team"
+            placeholder="e.g. 2"
+            type="number"
+          />
+        </Col>
       </FormGroup>
-      <FormGroup>
-        <Label for="allianceColor">
+      <FormGroup row>
+        <Label for="allianceColor" sm={2}>
           Alliance
         </Label>
-        <Input
-          id="allianceColor"
-          name="select"
-          type="select"
-        >
-          <option>
-            Blue
-          </option>
-          <option>
-            Red
-          </option>
-        </Input>
+        <Col sm={10}>
+          <Input
+            id="allianceColor"
+            name="select"
+            type="select"
+          >
+            <option>
+              Blue
+            </option>
+            <option>
+              Red
+            </option>
+          </Input>
+        </Col>
       </FormGroup>
       <br /> {/* cool spacer */}
-      <h3>
+      <h4>
         Autonomous
-      </h3>
-      <FormGroup>
-        <Label for="exampleText">
-          Text Area
-        </Label>
-        <Input
-          id="exampleText"
-          name="text"
-          type="textarea"
-        />
+      </h4>
+    <FormGroup row>
+      <Label
+        for="checkbox2"
+        sm={2}
+      >
+        Moved?
+      </Label>
+          <Col
+            sm={{
+              size: 10
+            }}
+          >
+            <FormGroup check>
+              <Input
+                id="checkbox2"
+                type="checkbox"
+              />
+              {' '}
+            </FormGroup>
+          </Col>
       </FormGroup>
-      <FormGroup tag="fieldset">
-        <legend>
-          Radio Buttons
-        </legend>
-        <FormGroup check>
-          <Input
-            name="radio1"
-            type="radio"
-          />
-          {' '}
-          <Label check>
-            Option one is this and that—be sure to include why it's great
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Input
-            name="radio1"
-            type="radio"
-          />
-          {' '}
-          <Label check>
-            Option two can be something else and selecting it will deselect option one
-          </Label>
-        </FormGroup>
-        <FormGroup
-          check
-          disabled
-        >
-          <Input
-            disabled
-            name="radio1"
-            type="radio"
-          />
-          {' '}
-          <Label check>
-            Option three is disabled
-          </Label>
-        </FormGroup>
-      </FormGroup>
-      <FormGroup check>
-        <Input type="checkbox" />
-        {' '}
-        <Label check>
-          Check me out
+      <FormGroup row>
+        <Label for="autoScored" sm={2}>
+          Scored Balls (auto)
         </Label>
+        <Col sm={10}>
+          <Input
+            id="autoScored"
+            name="autoScored"
+            placeholder="e.g. 1"
+            type="number"
+          
+          />
+        </Col>
+      </FormGroup>
+      <br/>
+      <h4>
+        Teleop
+      </h4>
+      <FormGroup row>
+        <Label for="teleScored" sm={2}>
+          Scored Balls (teleop)
+        </Label>
+        <Col sm={10}>
+          <Input
+            id="teleScored"
+            name="teleScored"
+            placeholder="e.g. 2"
+            type="number"
+          
+          />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="climbLevel" sm={2}>
+          Climb Level
+        </Label>
+        <Col sm={10}>
+          <Input
+            id="climbLevel"
+            name="climb"
+            type="select"
+          >
+            <option>
+              None
+            </option>
+            <option>
+              Low (1)
+            </option>
+            <option>
+              Mid (2)
+            </option>
+            <option>
+              High (3)
+            </option>
+            <option>
+              Traversal (4)
+            </option>
+          </Input>
+        </Col>
       </FormGroup>
       <Button>
         Submit
