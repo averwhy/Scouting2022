@@ -7,7 +7,6 @@ import Navigation from './Navigation';
 import Entry from './pages/Entry';
 import Matches from './pages/Matches';
 import Teams from './pages/Teams';
-import useLocalStorage from 'use-local-storage';
 
 function App() {
   useEffect(() => {
