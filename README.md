@@ -12,4 +12,5 @@ This is our Scouting website for the 2022 game Rapid React.
 Made with React.js and stuff
 
 ### Backend
-Idk
+Idk. probably firebase
+*firebase? more like firebased*

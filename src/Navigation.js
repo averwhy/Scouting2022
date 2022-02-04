@@ -4,10 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUserCircle, faAddressBook, faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 const tabs = [{
-    route: "/home",
-    icon: faHome,
-    label: "Home"
-  },{
     route: "/entry",
     icon: faAddressBook,
     label: "Data Entry"
@@ -19,7 +15,7 @@ const tabs = [{
     route: "/teams",
     icon: faUserAstronaut,
     label: "Team Data"
-  }]
+  }]  
   
 const Navigation = (props) => {
 	return (
