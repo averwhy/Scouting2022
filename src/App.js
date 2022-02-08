@@ -23,11 +23,11 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navigation><Entry /></Navigation>
+        <Navigation />
         <Routes>
-            <Route exact path="/" component={Entry} />
-            <Route path="/matches" component={Matches} />
-            <Route path="/teams" component={Teams} />
+            <Route exact path="/" element={<Entry/>} />
+            <Route path="/matches" element={<Matches/>} />
+            <Route path="/teams" element={<Teams/>} />
         </Routes>
       </BrowserRouter>
     </div>
