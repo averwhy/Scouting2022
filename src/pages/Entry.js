@@ -1,5 +1,11 @@
 import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col} from "reactstrap";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import YAML from 'yaml'
+import fs from "fs";
+
+const fb_config = YAML.parse(fs.readFileSync('./../../config.yaml', 'utf-8')) // Load firebase config
 
 const Entry = (props) => {
 return (
