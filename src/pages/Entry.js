@@ -12,9 +12,22 @@ const firebaseApp = initializeApp({
 })
 const db = getFirestore();
 
-const output = "";
-
 const Entry = (props) => {
+
+function submitForm(){
+  console.log("Submitted!");
+  try {
+    const docRef = addDoc(collection(db, "pre/scout"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
 return (
   <Container>
     <Form>
@@ -160,21 +173,5 @@ return (
   </Container>
   )
 };
-
-function submitForm(){
-  output = "Submitted!"
-  try {
-    const docRef = addDoc(collection(db, "pre"), {
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815
-    });
-    console.log("Document written with ID: ", docRef.id);
-    output = "Document written with ID: " + docRef.id;
-  } catch (e) {
-    console.error("Error adding document: ", e);
-    output = "Error adding document: " + e;
-  }
-}
 
 export default Entry;
