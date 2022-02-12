@@ -15,7 +15,7 @@ const tabs = [{
     route: "/teams",
     icon: faUserAstronaut,
     label: "Team Data"
-  }]  
+  }]
   
 const Navigation = (props) => {
 	return (

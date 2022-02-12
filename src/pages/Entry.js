@@ -2,10 +2,17 @@ import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col} from "reactstrap";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import YAML from 'yaml'
-import fs from "fs";
+import { collection, addDoc } from "firebase/firestore"; 
+import config from "../config.js";
 
-const fb_config = YAML.parse(fs.readFileSync('./../../config.yaml', 'utf-8')) // Load firebase config
+const firebaseApp = initializeApp({
+  apiKey: config['firebase_key'],
+  authDomain: config['firebase_auth_domain'],
+  projectId: config['firebase_project_id']
+})
+const db = getFirestore();
+
+const output = "";
 
 const Entry = (props) => {
 return (
@@ -24,7 +31,6 @@ return (
             name="match"
             placeholder="e.g. 1"
             type="number"
-          
           />
         </Col>
       </FormGroup>
@@ -145,12 +151,30 @@ return (
           </Input>
         </Col>
       </FormGroup>
-      <Button>
+      <Button color="info" onClick={submitForm}>
         Submit
       </Button>
+      <br/>
+      {output}
     </Form>
   </Container>
   )
 };
+
+function submitForm(){
+  output = "Submitted!"
+  try {
+    const docRef = addDoc(collection(db, "pre"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    });
+    console.log("Document written with ID: ", docRef.id);
+    output = "Document written with ID: " + docRef.id;
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    output = "Error adding document: " + e;
+  }
+}
 
 export default Entry;

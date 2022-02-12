@@ -7,19 +7,11 @@ import Navigation from './Navigation';
 import Entry from './pages/Entry';
 import Matches from './pages/Matches';
 import Teams from './pages/Teams';
+import Test from './pages/Test';
 
 function App() {
   useEffect(() => {
-    document.title = "138 Scouting";  
-  }, []);
-  /*          //Unused because i cant get dark mode to work :(
-  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
-  const switchTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-  }
-  */
+    document.title = "138 Scouting"; }, []);
   return (
     <div>
       <BrowserRouter>
@@ -28,6 +20,7 @@ function App() {
             <Route exact path="/" element={<Entry/>} />
             <Route path="/matches" element={<Matches/>} />
             <Route path="/teams" element={<Teams/>} />
+            <Route path="/test" element={<Test/>} />
         </Routes>
       </BrowserRouter>
     </div>
