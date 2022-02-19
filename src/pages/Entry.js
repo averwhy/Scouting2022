@@ -49,7 +49,7 @@ return (
       </FormGroup>
       <FormGroup row>
         <Label for="teamNum" sm={2}>
-          Match Number
+          Team Number
         </Label>
         <Col sm={10}>
           <Input
@@ -167,8 +167,6 @@ return (
       <Button color="info" onClick={submitForm}>
         Submit
       </Button>
-      <br/>
-      {output}
     </Form>
   </Container>
   )

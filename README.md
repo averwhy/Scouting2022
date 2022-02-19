@@ -8,10 +8,28 @@
 
 This is our Scouting website for the 2022 game Rapid React.
 
-### Frontend
+## Frontend
 Made with React.js and stuff
 
-### Backend
-Idk. probably firebase
+## Backend
+We use Firebase for our database
 
-*firebase? more like firebased*
+
+
+### How to run
+First, create a `config.js` in the `/src/` directory. Use this layout:
+```js
+const config = {
+firebase_key: "",
+firebase_auth_domain: "",
+firebase_project_id: "",
+firebase_bucket: "",
+firebase_messagingSenderId: "",
+firebase_appId: "",
+firebase_measurementId: "",
+}
+
+export default config;
+```
+You'll need a firebase project set up to fill out the values accordingly.
+Then, run `npm i`. After that you should be all set to run `npm run start` to run the website locally.
