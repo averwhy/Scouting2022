@@ -10,24 +10,24 @@ return (
       <ListGroup>
         <ListGroupItem
           action
-          tag="button"
-        >
+          tag="button">
+
           <ListGroupItemHeading>Match 1</ListGroupItemHeading>
           <ListGroupItemText>138, 256, 88 vs 2154, 139, 1004</ListGroupItemText>
           <Badge pill color="success">138 win</Badge>
         </ListGroupItem>
         <ListGroupItem
           action
-          tag="button"
-        >
+          tag="button">
+
           <ListGroupItemHeading>Match 2</ListGroupItemHeading>
           <ListGroupItemText>138, 256, 88 vs 2154, 139, 1004</ListGroupItemText>
           <Badge pill color="danger">138 loss</Badge>
         </ListGroupItem>
         <ListGroupItem
           action
-          tag="button"
-        >
+          tag="button">
+
           <ListGroupItemHeading>Match 3</ListGroupItemHeading>
           <ListGroupItemText>138, 256, 88 vs 2154, 139, 1004</ListGroupItemText>
           <Badge pill color="primary">Latest</Badge>
