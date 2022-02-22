@@ -23,13 +23,10 @@ function submitForm(e){
   e.preventDefault();
   console.log("Submitted!");
   try {
-    // const docRef = addDoc(collection(db, "pre/scout"), {
-    //   first: "Ada",
-    //   last: "Lovelace",
-    //   born: 1815
-    // });
-    //console.log("Document written with ID: ", docRef.id);
-    console.log(formData.matchNum.valueAsNumber);
+    const docRef = addDoc(collection(db, "pre/scout"), {
+      matchNumber: formData.matchNum.valueAsNumber
+    });
+    console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
