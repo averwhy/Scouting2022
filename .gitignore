@@ -27,3 +27,4 @@ firebase-debug.log
 .firebase/hosting.cHVibGlj.cache
 .firebase/hosting.YnVpbGQ.cache
 src/config.js
+package-lock.json
