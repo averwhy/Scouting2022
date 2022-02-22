@@ -1,6 +1,6 @@
 {
   "name": "scouting2022",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

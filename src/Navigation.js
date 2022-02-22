@@ -32,7 +32,7 @@ const Navigation = (props) => {
                 {
                 tabs.map((tab, index) =>(
                     <NavItem key={`tab-${index}`}>
-                    <NavLink to={tab.route} className="nav-link" activeClassName="active">
+                    <NavLink to={tab.route} className="nav-link" activeclassname="active">
                         <div className="row d-flex flex-column justify-content-center align-items-center">
                         <FontAwesomeIcon size="lg" icon={tab.icon}/>
                         <div>{tab.label}</div>

@@ -4,25 +4,32 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore"; 
 import config from "../config.js";
-
+// eslint-disable-next-line
 const firebaseApp = initializeApp({
   apiKey: config['firebase_key'],
   authDomain: config['firebase_auth_domain'],
   projectId: config['firebase_project_id']
 })
 const db = getFirestore();
-
+// eslint-disable-next-line
+const formData = Object({
+  teamNum: 0,
+  matchNum: 0,
+  
+})
 const Entry = (props) => {
-
-function submitForm(){
+//eslint-disable-next-line
+function submitForm(e){
+  e.preventDefault();
   console.log("Submitted!");
   try {
-    const docRef = addDoc(collection(db, "pre/scout"), {
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815
-    });
-    console.log("Document written with ID: ", docRef.id);
+    // const docRef = addDoc(collection(db, "pre/scout"), {
+    //   first: "Ada",
+    //   last: "Lovelace",
+    //   born: 1815
+    // });
+    //console.log("Document written with ID: ", docRef.id);
+    console.log(formData.matchNum.valueAsNumber);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -30,7 +37,7 @@ function submitForm(){
 
 return (
   <Container>
-    <Form>
+    <Form onSubmit={submitForm}>
       <h3>
         Scouting Entry
       </h3>
@@ -44,6 +51,7 @@ return (
             name="match"
             placeholder="e.g. 1"
             type="number"
+            innerRef={(node) => formData.matchNum = node}
           />
         </Col>
       </FormGroup>
@@ -164,7 +172,7 @@ return (
           </Input>
         </Col>
       </FormGroup>
-      <Button color="info" onClick={submitForm}>
+      <Button type="submit" color="info">
         Submit
       </Button>
     </Form>
