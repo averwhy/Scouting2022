@@ -2,18 +2,14 @@ import React from 'react';
 import { Nav, NavItem} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faAddressBook, faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 const tabs = [{
     route: "/",
-    icon: faAddressBook,
     label: "Data Entry"
   },{
     route: "/matches",
-    icon: faUserCircle,
     label: "Match Data"
   },{
     route: "/teams",
-    icon: faUserAstronaut,
     label: "Team Data"
   }]
   

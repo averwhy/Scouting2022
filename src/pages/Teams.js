@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListGroup, ListGroupItem, ListGroupItemHeading, Container, Badge, UncontrolledAlert, Popover, PopoverHeader, PopoverBody} from "reactstrap";
+import {ListGroup, ListGroupItem, ListGroupItemHeading, Container, Badge, UncontrolledAlert} from "reactstrap";
 
 const Teams = (props) => {
   return (
