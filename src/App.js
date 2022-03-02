@@ -8,6 +8,7 @@ import Entry from './pages/Entry';
 import Matches from './pages/Matches';
 import Teams from './pages/Teams';
 import Test from './pages/Test';
+import Submitted from './pages/Submitted';
 
 function App() {
   useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/matches" element={<Matches/>} />
             <Route path="/teams" element={<Teams/>} />
             <Route path="/test" element={<Test/>} />
+            <Route path="/submitted" element={<Submitted/>} />
         </Routes>
       </BrowserRouter>
     </div>

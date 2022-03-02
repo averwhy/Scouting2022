@@ -1,8 +1,7 @@
 import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col} from "reactstrap";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
-import { useCookies } from "react-cookie";
+import { getFirestore, collection, addDoc, Timestamp } from "firebase/firestore";
 import config from "../config.js";
 // eslint-disable-next-line
 const firebaseApp = initializeApp({
@@ -23,18 +22,9 @@ const formData = Object({
   climbLevel: '',
   finalScoreBlue: 0,
   finalScoreRed: 0,
-  notes: '',
+  notes: 'None',
 })
 const Entry = (props) => {
-  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
-  function genID(){
-    return Math.floor(
-      Math.random() * (9999 - 1000) + 1000)}
-  async function getScouters(){
-    const scoutersCol = collection(db, 'scouters');
-    const scouterSnapshot = await getDocs(scoutersCol);
-    const scouterList = scouterSnapshot.docs.map(doc => doc.data());
-    return scouterList;}
   function submitForm(e){
     e.preventDefault();
     console.log("Submitted!");
@@ -42,23 +32,23 @@ const Entry = (props) => {
       const docRef = addDoc(collection(db, "testing"), {
         teamNumber: formData.teamNum.valueAsNumber,
         matchNumber: formData.matchNum.valueAsNumber,
-        allianceColor: formData.allianceColor.defaultValue,
+        allianceColor: formData.allianceColor.value,
         autoLow: formData.autoScoredLow.valueAsNumber,
         autoHigh: formData.autoScoredHigh.valueAsNumber,
         autoMoved: formData.autoMoved.checked,
         teleLow: formData.teleScoredLow.valueAsNumber,
         teleHigh: formData.teleScoreHigh.valueAsNumber,
-        climbLevel: formData.climbLevel.defaultValue,
+        climbLevel: formData.climbLevel.value,
         finalBlue: formData.finalScoreBlue.valueAsNumber,
         finalRed: formData.finalScoreRed.valueAsNumber,
-        notes: formData.notes.defaultValue
+        notes: formData.notes.value,
+        submitted: Timestamp.now()
       });
       console.log("Document written with ID: ", docRef.id);
-      setCookie("scouting_id", genID())
-      const docRef2 = addDoc(collection(db, "scouters"))
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+    //window.location.href = "/submitted"; // TODO: Broken right now, makes it that so it doesnt submit data for some reason
   }
 
   return (
@@ -274,6 +264,12 @@ const Entry = (props) => {
         <Button type="submit" color="info">
           Submit
         </Button>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
       </Form>
     </Container>
   )
