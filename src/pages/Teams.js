@@ -1,4 +1,4 @@
-import {React, useEffect} from 'react';
+import {React} from 'react';
 import {ListGroup, Container, UncontrolledAlert} from "reactstrap";
 import TeamListItem from './utils/TeamListItem';
 
@@ -9,11 +9,7 @@ const Teams = (props) => {
   <br></br>
   <h2>Team List</h2>
   <ListGroup flush>
-    {
-    useEffect(() => {
-      TeamListItem()
-    })
-    }
+    <TeamListItem/>
   </ListGroup>
 </Container>
   )

@@ -34,22 +34,22 @@ class database {
         return addDoc(this.collection, data);
     }
 
-    getHighestAutoPoints(){
-        var data = this.getAll();
-        var highest = null;
-        for (const entry of data){
-            if (highest == null){
-                highest = entry;
-            } else {
-                var entryTotal = (entry.autoHigh + entry.autoLow);
-                var highestTotal = (highest.autoHigh + highest.autoLow);
-                if (entryTotal >= highestTotal){
-                    highest = entry;
-                } else { continue }
-            }
-        }
-        return highest;
-    }
+    // getHighestAutoPoints(){
+    //     var data = this.getAll();
+    //     var highest = null;
+    //     for (const entry of data){
+    //         if (highest == null){
+    //             highest = entry;
+    //         } else {
+    //             var entryTotal = (entry.autoHigh + entry.autoLow);
+    //             var highestTotal = (highest.autoHigh + highest.autoLow);
+    //             if (entryTotal >= highestTotal){
+    //                 highest = entry;
+    //             } else { continue }
+    //         }
+    //     }
+    //     return highest;
+    // }
 }
 
 export default database;
