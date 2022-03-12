@@ -1,20 +1,19 @@
 import react from 'react';
 import database from './db';
-import { ListGroupItem, ListGroupItemHeading } from 'reactstrap';
+import { ListGroupItem, ListGroupItemHeading, Badge } from 'reactstrap';
+//import {collection} from "firebase/firestore";
 const db = new database("testing");
 
 class TeamListItem extends react.Component{
   
   constructor(props){
     super(props);
-    console.log("Constructor");
     this.state = {
       data: []
     };
   }
 
   componentDidMount(){
-    console.log("Mount");
     db.getAll().then((d) => {
       this.setState({data: d})
     })
@@ -22,52 +21,62 @@ class TeamListItem extends react.Component{
 
   getHighestAuto(){ // This should probably average
     var currentHighest = 0;
+    var highestTeam = 0;
     db.getAll().then((d) => {
       d.forEach(element => {
-        var AH = element.get("autoHigh");
-        var AL = element.get("autoLow");
-        if ((AH + AL) > currentHighest){
-          currentHighest = (AH + AL);
+        var AH = parseInt(element.get("autoHigh"));
+        var AL = parseInt(element.get("autoLow"));
+        if (currentHighest === 0){
+          currentHighest = (AH + AL)
+          highestTeam = element.get("teamNumber");
         }
-        if (currentHighest === 0){ currentHighest = (AH + AL)}
+        else if ((AH + AL) > currentHighest){
+          currentHighest = (AH + AL);
+          highestTeam = element.get("teamNumber");
+        }
       })
+      return highestTeam;
     })
   }
   getHighestClimberAverage(){ // TODO: Make this actually average it
     var currentHighest = 0;
+    var highestTeam = 0;
     db.getAll().then((d) => {
       d.forEach(element => {
-        var climbnum = (element.get("climbingLevel")).match(/\d+/)[0]
+        var climbnum = element.get("climbLevel") //.match(/\d+/)[0]
         if (climbnum > currentHighest){
           currentHighest = climbnum;
+          highestTeam = element.get("teamNumber");
         }
-        if (currentHighest === 0){ currentHighest = climbnum}
+        if (currentHighest === 0){
+          currentHighest = climbnum
+          highestTeam = element.get("teamNumber");
+        }
       })
+      return highestTeam;
     })
   }
-
+  
   generateList(){
     var items = [];
-    console.log(this.getHighestAuto());
-    console.log(this.getHighestClimberAverage());
+    var addedTeams = [];
     this.state.data.forEach(element => {
-      console.log("Entry processed")
-      items.push(
+      var tnum = element.get("teamNumber")
+      if (!(tnum in addedTeams)){
+        items.push(
           <ListGroupItem
               tag="button">
-              <ListGroupItemHeading>Team {element.get("teamNumber")}</ListGroupItemHeading>
-              {/* addAutoPill(element.get("teamNumber")) */}
+              <ListGroupItemHeading>
+                Team {tnum}
+              </ListGroupItemHeading>
           </ListGroupItem>
-      )
+        )
+      }
     });
     return items
   }
-
   render() {
-    console.log('Render lifecycle')
     return this.generateList();
   }
 }
-    //.then((d) => {console.log(d._snapshot)})
-
 export default TeamListItem;

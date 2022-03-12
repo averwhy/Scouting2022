@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs} from "firebase/firestore";
 import config from '../../config';
 
 class database {
@@ -11,7 +11,7 @@ class database {
             projectId: config['firebase_project_id']
           })
         this.app = firebaseApp;
-        this.db = getFirestore();
+        this.db = getFirestore(); // useless
     }
 
     refreshDB(){
@@ -19,10 +19,19 @@ class database {
     }
 
     async getAll(){
-        // var q = new Query(collection(this.db, this.collection), where("teamNumber", "==", 138))
-        // var data = await getDocs(q);
         var data = await getDocs(collection(this.db, this.collection));
         return data;
+    }
+    
+    async getTeam(num){
+        var data = await getDocs(collection(this.db, this.collection));
+        var results = [];
+        data.forEach(d =>{
+            if (d.get("teamNumber") == num){
+                results.push(d);
+            }
+        })
+        return results;
     }
 
     async getMarker() {
