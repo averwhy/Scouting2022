@@ -64,8 +64,7 @@ class TeamListItem extends react.Component{
       var tnum = element.get("teamNumber")
       if (!(tnum in addedTeams)){
         items.push(
-          <ListGroupItem
-              tag="button">
+          <ListGroupItem action tag='button'>
               <ListGroupItemHeading>
                 Team {tnum}
               </ListGroupItemHeading>

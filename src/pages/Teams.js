@@ -1,5 +1,5 @@
 import {React} from 'react';
-import {ListGroup, Container, UncontrolledAlert, ListGroupItem} from "reactstrap";
+import {ListGroup, Container, UncontrolledAlert, ListGroupItem, ListGroupItemHeading} from "reactstrap";
 import TeamListItem from './utils/TeamListItem';
 
 const Teams = (props) => {
@@ -10,9 +10,6 @@ const Teams = (props) => {
     <h2>Team List</h2>
     <ListGroup flush>
       <TeamListItem/>
-      <ListGroupItem>
-        Test
-      </ListGroupItem>
     </ListGroup>
   </Container>
   )
