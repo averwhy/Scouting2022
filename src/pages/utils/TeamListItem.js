@@ -61,7 +61,7 @@ class TeamListItem extends react.Component{
     var addedTeams = [];
     this.state.data.forEach(element => {
       var tnum = element.get("teamNumber");
-      var element_id = "team" + tnum;
+      var element_id = "team" + tnum; // allows for unique collapses per listitem
       console.log(addedTeams);
       if (!(addedTeams.includes(tnum))){
         items.push(
