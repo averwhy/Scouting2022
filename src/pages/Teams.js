@@ -1,5 +1,5 @@
 import {React} from 'react';
-import {ListGroup, Container, UncontrolledAlert, ListGroupItem, ListGroupItemHeading} from "reactstrap";
+import {ListGroup, Container, UncontrolledAlert} from "reactstrap";
 import TeamListItem from './utils/TeamListItem';
 
 const Teams = (props) => {

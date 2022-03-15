@@ -1,6 +1,6 @@
 import react from 'react';
 import database from './db';
-import { ListGroupItem, ListGroupItemHeading, Badge } from 'reactstrap';
+import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse } from 'reactstrap';
 //import {collection} from "firebase/firestore";
 const db = new database("testing");
 
@@ -61,15 +61,27 @@ class TeamListItem extends react.Component{
     var items = [];
     var addedTeams = [];
     this.state.data.forEach(element => {
-      var tnum = element.get("teamNumber")
-      if (!(tnum in addedTeams)){
+      var tnum = element.get("teamNumber");
+      var element_id = "team" + tnum;
+      console.log(addedTeams);
+      if (!(addedTeams.includes(tnum))){
         items.push(
-          <ListGroupItem action tag='button'>
+          <ListGroupItem action tag='button' id={element_id}>
               <ListGroupItemHeading>
                 Team {tnum}
               </ListGroupItemHeading>
           </ListGroupItem>
         )
+        items.push(
+          <UncontrolledCollapse toggler={element_id}>
+            <Card>
+              <CardBody>
+                Notes: {element.get("notes")}
+              </CardBody>
+            </Card>
+          </UncontrolledCollapse>
+        )
+        addedTeams.push(tnum);
       }
     });
     return items
