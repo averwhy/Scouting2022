@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs} from "firebase/firestore";
-import config from '../../config'; // eslint-disable-line
+import config from '../../config';
 
 class database {
     constructor(colName){

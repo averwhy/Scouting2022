@@ -1,7 +1,6 @@
 import react from 'react';
 import database from './db';
 import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse } from 'reactstrap';
-//import {collection} from "firebase/firestore";
 const db = new database("testing");
 
 class TeamListItem extends react.Component{
