@@ -2,7 +2,7 @@ import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col} from "reactstrap";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, Timestamp } from "firebase/firestore";
-import config from "../config.js";
+import config from "../config.js"; // eslint-disable-line
 // eslint-disable-next-line
 const firebaseApp = initializeApp({
   apiKey: config['firebase_key'],
