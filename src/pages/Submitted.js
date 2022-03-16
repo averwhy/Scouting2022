@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import { Container, Form, Button } from 'reactstrap';
 
 const Submitted = (props) => {
+    var navigate = useNavigate();
     function backtoEntry(){
-        window.location.href = "/";
+        navigate("/", {replace: true})
     }
     return (
         <Container>
@@ -12,7 +14,7 @@ const Submitted = (props) => {
                 <br/>
                 <center>
                     <h4>
-                        Scouting form submmited succesfully!
+                        Scouting form submmited successfully!
                     </h4>
                     <br/>
                     <Button color="dark" onClick={backtoEntry}>

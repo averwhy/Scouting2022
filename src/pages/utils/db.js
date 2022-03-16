@@ -27,11 +27,24 @@ class database {
         var data = await getDocs(collection(this.db, this.collection));
         var results = [];
         data.forEach(d =>{
-            if (d.get("teamNumber") == num){
+            if (d.get("teamNumber") === num){
                 results.push(d);
             }
         })
         return results;
+    }
+
+    getTeamMatches(num){
+        var matches = [];
+        this.getAll().then((d) => {
+        d.forEach(e =>{
+            if (e.get("teamNumber") === num){
+                matches.push(e.get("matchNumber"));
+            }
+        })
+        return matches;
+        }
+        )
     }
 
     async getMarker() {

@@ -71,11 +71,22 @@ class TeamListItem extends react.Component{
               </ListGroupItemHeading>
           </ListGroupItem>
         )
+        var tmatches = db.getTeamMatches(tnum)
         items.push(
           <UncontrolledCollapse toggler={element_id}>
             <Card>
               <CardBody>
-                Notes: {element.get("notes")}
+                Matches: {tmatches}
+                <h5>Teleop</h5>
+                Points: {element.get("teleLow")} low, {element.get("teleHigh")} high
+                <br/><br/>
+                <h5>Auto</h5>
+                Moved? {element.get("autoMoved").toString()}<br/>
+                Points: {element.get("autoLow")} low, {element.get("autoHigh")} high
+                <br/>
+                Climb: {element.get("climbLevel")}
+                <br/><br/>
+                Other notes: {element.get("notes")}
               </CardBody>
             </Card>
           </UncontrolledCollapse>

@@ -5,7 +5,7 @@ import TeamListItem from './utils/TeamListItem';
 const Teams = (props) => {
   return (
   <Container>
-    <UncontrolledAlert color="warning">Hey! This is just example data to test the components, not real team data.</UncontrolledAlert>
+    <UncontrolledAlert color="info">Hey! This is testing/example data since we haven't been to a competition yet.</UncontrolledAlert>
     <br></br>
     <h2>Team List</h2>
     <ListGroup flush>

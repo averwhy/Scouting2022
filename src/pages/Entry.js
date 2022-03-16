@@ -1,15 +1,11 @@
 import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col} from "reactstrap";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, Timestamp } from "firebase/firestore";
-import config from "../config.js";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import database from './utils/db';
+import { useNavigate } from 'react-router';
 
-const firebaseApp = initializeApp({
-  apiKey: config['firebase_key'],
-  authDomain: config['firebase_auth_domain'],
-  projectId: config['firebase_project_id']
-})
-const db = getFirestore();
+var db = new database("testing"); // todo test this
+
 const formData = Object({
   teamNum: 0,
   matchNum: 0,
@@ -25,11 +21,11 @@ const formData = Object({
   notes: 'None',
 })
 const Entry = (props) => {
+  var navigate = useNavigate();
   function submitForm(e){
     e.preventDefault();
-    console.log("Submitted!");
     try {
-      const docRef = addDoc(collection(db, "testing"), {
+      addDoc(collection(db.db, "testing"), {
         teamNumber: formData.teamNum.valueAsNumber,
         matchNumber: formData.matchNum.valueAsNumber,
         allianceColor: formData.allianceColor.value,
@@ -44,11 +40,12 @@ const Entry = (props) => {
         notes: formData.notes.value,
         submitted: Timestamp.now()
       });
-      console.log("Document written with ID: ", docRef.id);
+      console.log("Submitted!");
+      navigate("/submitted", {replace: true})
+
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-    //window.location.href = "/submitted"; // TODO: Broken right now, makes it that so it doesnt submit data for some reason
   }
 
   return (
