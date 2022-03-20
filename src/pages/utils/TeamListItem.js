@@ -18,7 +18,18 @@ class TeamListItem extends react.Component{
     })
   }
 
-  getHighestAuto(){ // This should probably average
+  do_average(){
+    var items = Object.values(arguments);
+    var average = 0;
+    if (items[0] instanceof Array){
+      items[0].forEach(n => average += n);
+    } else {
+    items.forEach(n => average += n);
+    }
+    return average;
+  }
+
+  getHighestAuto(){
     var currentHighest = 0;
     var highestTeam = 0;
     db.getAll().then((d) => {
@@ -37,10 +48,14 @@ class TeamListItem extends react.Component{
       return highestTeam;
     })
   }
-  getHighestClimberAverage(){ // TODO: Make this actually average it
+  getHighestClimber(doAv){
     var currentHighest = 0;
     var highestTeam = 0;
     db.getAll().then((d) => {
+      if (doAv === true){
+        var nums = [];
+        d.forEach(element => nums += element)
+      }
       d.forEach(element => {
         var climbnum = element.get("climbLevel") //.match(/\d+/)[0]
         if (climbnum > currentHighest){
@@ -76,7 +91,7 @@ class TeamListItem extends react.Component{
           <UncontrolledCollapse toggler={element_id}>
             <Card>
               <CardBody>
-                Matches: {tmatches}
+                Matches: {tmatches.toString()} {/*This shit is erroring right here and it's pissing me off*/}
                 <h5>Teleop</h5>
                 Points: {element.get("teleLow")} low, {element.get("teleHigh")} high
                 <br/><br/>
