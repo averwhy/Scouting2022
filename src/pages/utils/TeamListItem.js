@@ -4,7 +4,9 @@ import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollap
 var humanize = require("humanize");
 var humanizeList = require('humanize-list')
 const db = new database("testing");
-
+const today = new Date()
+var start = null;
+var end = null;
 class TeamListItem extends react.Component{
   
   constructor(props){
@@ -15,6 +17,7 @@ class TeamListItem extends react.Component{
   }
 
   componentDidMount(){
+    start = today.getSeconds()
     db.getAll().then((d) => {
       this.setState({snapshot: d})
     })
@@ -192,7 +195,10 @@ class TeamListItem extends react.Component{
       final_jsx.push(lgi);
       final_jsx.push(ci);
     })
-
+    end = today.getSeconds()
+    final_jsx.push(
+      <Container><br/>Fetched in {(end - start)}</Container>
+    )
     return final_jsx;
   }
 }

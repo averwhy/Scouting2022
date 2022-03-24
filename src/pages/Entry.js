@@ -39,10 +39,10 @@ const Entry = (props) => {
         finalRed: formData.finalScoreRed.valueAsNumber,
         notes: formData.notes.value,
         submitted: Timestamp.now()
-      });
+      }).then(a => {
       console.log("Submitted!");
       navigate("/submitted", {replace: true})
-
+      });
     } catch (e) {
       console.error("Error adding document: ", e);
     }
