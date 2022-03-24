@@ -4,7 +4,7 @@ import { collection, addDoc, Timestamp } from "firebase/firestore";
 import database from './utils/db';
 import { useNavigate } from 'react-router';
 
-var db = new database("testing"); // todo test this
+var db = new database("testing");
 
 const formData = Object({
   teamNum: 0,

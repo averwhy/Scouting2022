@@ -13,6 +13,8 @@
     "config": "^3.3.7",
     "firebase": "^9.6.7",
     "fs": "^0.0.1-security",
+    "humanize": "^0.0.9",
+    "humanize-list": "^1.0.1",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",

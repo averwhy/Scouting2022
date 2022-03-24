@@ -12,6 +12,7 @@ class database {
           })
         this.app = firebaseApp;
         this.db = getFirestore(); // useless
+        this.getTeamMatches = this.getTeamMatches.bind(this)
     }
 
     refreshDB(){
@@ -34,17 +35,14 @@ class database {
         return results;
     }
 
-    getTeamMatches(num){
-        var matches = [];
-        this.getAll().then((d) => {
-        d.forEach(e =>{
-            if (e.get("teamNumber") === num){
-                matches.push(e.get("matchNumber"));
+    getTeamMatches(num, data) {
+        var results = []
+        data.forEach(entry => {
+            if (entry.get("teamNumber") === num){
+                results.push(entry.get("matchNumber"))
             }
         })
-        return matches;
-        }
-        )
+        return results.sort();
     }
 
     async getMarker() {
