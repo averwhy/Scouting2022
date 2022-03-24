@@ -1,6 +1,6 @@
 import react from 'react';
 import database from './db';
-import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse } from 'reactstrap';
+import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse, Spinner, Container } from 'reactstrap';
 var humanize = require("humanize");
 var humanizeList = require('humanize-list')
 const db = new database("testing");
@@ -109,7 +109,6 @@ class TeamListItem extends react.Component{
   }
 
   generateData(){
-    console.log(this.state.snapshot)
     var addedTeams = [];
     var listgroupItems = [];
     var collapseItems = [];
@@ -119,20 +118,24 @@ class TeamListItem extends react.Component{
       if (!(addedTeams.includes(tnum))){
         var tmatches = db.getTeamMatches(tnum, this.state.snapshot)
         listgroupItems.push([element_id, tnum])
-        collapseItems.push([element_id, tmatches, element, //0,1,2
-          this.point_average("teleLow", tnum), //3
-          this.point_average("teleHigh", tnum), //4
-          this.point_average("autoLow", tnum), //5
-          this.point_average("autoHigh", tnum), //6
-          this.climb_data(tnum), //7
-          this.combine_notes(tnum), //8
-          this.entry_amount(tnum), //9
-          this.total_points(tnum), //10
-          this.auto_move_data(tnum) //11
+        collapseItems.push([element_id, tmatches, //0,1
+          this.point_average("teleLow", tnum), //2
+          this.point_average("teleHigh", tnum), //3
+          this.point_average("autoLow", tnum), //4
+          this.point_average("autoHigh", tnum), //5
+          this.climb_data(tnum), //6
+          this.combine_notes(tnum), //7
+          this.entry_amount(tnum), //8
+          this.total_points(tnum), //9
+          this.auto_move_data(tnum) //10
         ])
         addedTeams.push(tnum);
       }
     });
+    // so, all data has to be processed before being sent to render().
+    // i was encountering an error where react was saying an object was being rendered
+    // this was because the raw entry was included in the collapseItems list on line 121
+    // even though it was not called at all, it thought it was being rendered
     return [listgroupItems, collapseItems];
   }
 
@@ -140,7 +143,13 @@ class TeamListItem extends react.Component{
     // Len of both lists should always be the same, since each ListGroupItem has a Collapse
     var [listgroupItems, collapseItems] = this.generateData();
     var final_jsx = [];
-    listgroupItems.map((entry) => ( 
+    if (listgroupItems.length === 0){ // Nothing was returned so we'll do a loading icon
+      return ( <Spinner type='border' color='dark'>Loading...</Spinner> )
+    }
+    // collapseItems.map((entry) => {
+    //   console.log(entry)
+    // })
+    var newListItems = listgroupItems.map((entry) => (
       // for this: entry[0] = it's ID (e.g. team138)
       // entry[1] = the raw team number
       <ListGroupItem action tag='button' id={entry[0]}>
@@ -149,7 +158,8 @@ class TeamListItem extends react.Component{
           </ListGroupItemHeading>
       </ListGroupItem>
     ))
-    collapseItems.map((entry) => (
+
+    var newCollapseItems = collapseItems.map((entry) => (
       // for this: entry[0] = it's ID (e.g. team138)
       // entry[1] = the raw team number
       <UncontrolledCollapse toggler={entry[0]}>
@@ -157,28 +167,28 @@ class TeamListItem extends react.Component{
           <CardBody>
             Matches: {entry[1].toString()}
             <h5>Teleop</h5>
-            Average Points: {entry[3]} low, {entry[4]} high
+            Average Points: {entry[2]} low, {entry[3]} high
             <br/><br/>
             <h5>Auto</h5>
-            Moved? {entry[11][0]} yes / {entry[11][2]}total<br/>
-            Average Points: {entry[5]} low, {entry[6]} high
+            Moved? {entry[10][0]} yes / {entry[10][2]}total<br/>
+            Average Points: {entry[4]} low, {entry[5]} high
             <br/><br/>
-            Average climb height: {entry[7][0]}
-            Max/best climb height reached: {humanize.ordinal(entry[7][1])}
-            Min/worst climb height reached: {humanize.ordinal(entry[7][2])}
-            All climbs: {humanizeList(entry[7][3])}
+            Average climb height: {entry[6][0]} <br/>
+            Max/best climb height reached: {humanize.ordinal(entry[6][1])} bar <br/>
+            Min/worst climb height reached: {humanize.ordinal(entry[6][2])} bar <br/>
+            All climbs: {humanizeList(entry[6][3])}
             <br/><br/>
-            Total points: {entry[10]}
-            Other notes: {entry[8]}
-            Times scouted: {entry[9]}
+            Total points: {entry[9]} <br/>
+            Other notes: {entry[7]} <br/>
+            Times scouted: {entry[8]}
           </CardBody>
         </Card>
       </UncontrolledCollapse>
     ))
 
     // and then, we'll combine it all together into final_jsx
-    listgroupItems.forEach((lgi, index) => {
-      const ci = collapseItems[index] // so we're basically iterating through both at once
+    newListItems.forEach((lgi, index) => {
+      const ci = newCollapseItems[index] // so we're basically iterating through both at once
       final_jsx.push(lgi);
       final_jsx.push(ci);
     })
