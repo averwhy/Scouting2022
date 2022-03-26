@@ -20,6 +20,9 @@ const Submitted = (props) => {
                     <Button color="dark" onClick={backtoEntry}>
                       Back to entry
                     </Button>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    By the way, if you were scouting pits, 
+                    <br/>hit that rightmost button on the bottom there to go back.
                 </center>
             </Form>
         </Container>

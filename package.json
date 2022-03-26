@@ -1,6 +1,6 @@
 {
   "name": "scouting2022",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -15,6 +15,7 @@
     "fs": "^0.0.1-security",
     "humanize": "^0.0.9",
     "humanize-list": "^1.0.1",
+    "perf_hooks": "^0.0.1",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav, NavItem} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const tabs = [{
     route: "/",
     label: "Data Entry"
@@ -11,6 +10,9 @@ const tabs = [{
   },{
     route: "/teams",
     label: "Team Data"
+  },{
+    route: "/pitentry",
+    label: "Pit Data Entry"
   }]
   
 const Navigation = (props) => {
@@ -30,7 +32,7 @@ const Navigation = (props) => {
                     <NavItem key={`tab-${index}`}>
                     <NavLink to={tab.route} className="nav-link" activeclassname="active">
                         <div className="row d-flex flex-column justify-content-center align-items-center">
-                        <FontAwesomeIcon size="lg"/>
+
                         <div>{tab.label}</div>
                         </div>
                     </NavLink>

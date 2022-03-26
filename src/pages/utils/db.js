@@ -39,14 +39,14 @@ class database {
         var results = []
         data.forEach(entry => {
             if (entry.get("teamNumber") === num){
-                results.push(entry.get("matchNumber"))
+                results.push("#" + entry.get("matchNumber"))
             }
         })
         return results.sort();
     }
 
     async getMarker() {
-        const snapshot = await collection(this.db, '/testing').get()
+        const snapshot = await collection(this.db, ("/" + this.collection)).get()
         return snapshot.docs.map(doc => doc.data());
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, FormGroup, Label, Input, Button, Container, Col} from "reactstrap";
+import {Form, FormGroup, Label, Input, Button, Container, Col, UncontrolledAlert} from "reactstrap";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import database from './utils/db';
 import { useNavigate } from 'react-router';
@@ -50,6 +50,12 @@ const Entry = (props) => {
 
   return (
     <Container>
+      <UncontrolledAlert color="info">Hey! Here are some important tips for scouting.
+      <br/>1. Always stay focused on your bot. We want accurate data to pick good teammates!
+      <br/>2. Doublecheck your data before submitting.
+      <br/>3. If there's any thing you think should be added, add that in the last field under 'Notes'.
+      <br/>Also, remember that we can use this data to impress potential alliance partners.
+      <br/>If you need help find Avery!!!</UncontrolledAlert>
       <Form onSubmit={submitForm}>
         <h3>
           Scouting Entry

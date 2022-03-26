@@ -5,12 +5,13 @@ import TeamListItem from './utils/TeamListItem';
 const Teams = (props) => {
   return (
   <Container>
-    <UncontrolledAlert color="info">Hey! This is testing/example data since we haven't been to a competition yet.</UncontrolledAlert>
+    <UncontrolledAlert color="info">Hey! An infinite loading icon means there's no data.</UncontrolledAlert>
     <br></br>
     <h2>Team List</h2>
     <ListGroup flush>
       <TeamListItem/>
     </ListGroup>
+    <br/><br/><br/><br/><br/><br/><br/>
   </Container>
   )
 };

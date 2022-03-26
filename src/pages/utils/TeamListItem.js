@@ -1,12 +1,9 @@
 import react from 'react';
 import database from './db';
-import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse, Spinner, Container } from 'reactstrap';
+import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse, Spinner } from 'reactstrap';
 var humanize = require("humanize");
 var humanizeList = require('humanize-list')
-const db = new database("testing");
-const today = new Date()
-var start = null;
-var end = null;
+const db = new database("shrewsbury");
 class TeamListItem extends react.Component{
   
   constructor(props){
@@ -17,7 +14,6 @@ class TeamListItem extends react.Component{
   }
 
   componentDidMount(){
-    start = today.getSeconds()
     db.getAll().then((d) => {
       this.setState({snapshot: d})
     })
@@ -46,6 +42,7 @@ class TeamListItem extends react.Component{
     })
     var average = 0;
     results.forEach(n => average += n);
+    average = average / results.length
     return average;
   }
 
@@ -70,14 +67,14 @@ class TeamListItem extends react.Component{
           var numLevel = (entry.get("climbLevel")).match(/(\d+)/)[0]
           results.push(parseInt(numLevel));
         } else {
-          // none = 0
+          // none, so 0
           results.push(0);
         }
       }
     })
     var average = 0;
-    var highest = Math.max(results);
-    var lowest = Math.min(results);
+    var highest = Math.max(...results);
+    var lowest = Math.min(...results);
     results.forEach(n => average += n);
     average = average / results.length
     return [average, highest, lowest, results];
@@ -149,9 +146,7 @@ class TeamListItem extends react.Component{
     if (listgroupItems.length === 0){ // Nothing was returned so we'll do a loading icon
       return ( <Spinner type='border' color='dark'>Loading...</Spinner> )
     }
-    // collapseItems.map((entry) => {
-    //   console.log(entry)
-    // })
+
     var newListItems = listgroupItems.map((entry) => (
       // for this: entry[0] = it's ID (e.g. team138)
       // entry[1] = the raw team number
@@ -195,10 +190,6 @@ class TeamListItem extends react.Component{
       final_jsx.push(lgi);
       final_jsx.push(ci);
     })
-    end = today.getSeconds()
-    final_jsx.push(
-      <Container><br/>Fetched in {(end - start)}</Container>
-    )
     return final_jsx;
   }
 }
