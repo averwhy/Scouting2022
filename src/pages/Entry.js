@@ -4,7 +4,8 @@ import { collection, addDoc, Timestamp } from "firebase/firestore";
 import database from './utils/db';
 import { useNavigate } from 'react-router';
 
-var db = new database("testing");
+const dbcol = "shrewsbury-real";
+var db = new database(dbcol);
 
 const formData = Object({
   teamNum: 0,
@@ -25,19 +26,19 @@ const Entry = (props) => {
   function submitForm(e){
     e.preventDefault();
     try {
-      addDoc(collection(db.db, "testing"), {
-        teamNumber: formData.teamNum.valueAsNumber,
-        matchNumber: formData.matchNum.valueAsNumber,
+      addDoc(collection(db.db, dbcol), {
+        teamNumber: formData.teamNum.valueAsNumber || 0,
+        matchNumber: formData.matchNum.valueAsNumber || 0,
         allianceColor: formData.allianceColor.value,
-        autoLow: formData.autoScoredLow.valueAsNumber,
-        autoHigh: formData.autoScoredHigh.valueAsNumber,
+        autoLow: formData.autoScoredLow.valueAsNumber || 0,
+        autoHigh: formData.autoScoredHigh.valueAsNumber || 0,
         autoMoved: formData.autoMoved.checked,
-        teleLow: formData.teleScoredLow.valueAsNumber,
-        teleHigh: formData.teleScoreHigh.valueAsNumber,
+        teleLow: formData.teleScoredLow.valueAsNumber || 0,
+        teleHigh: formData.teleScoreHigh.valueAsNumber || 0,
         climbLevel: formData.climbLevel.value,
-        finalBlue: formData.finalScoreBlue.valueAsNumber,
-        finalRed: formData.finalScoreRed.valueAsNumber,
-        notes: formData.notes.value,
+        finalBlue: formData.finalScoreBlue.valueAsNumber || 0,
+        finalRed: formData.finalScoreRed.valueAsNumber || 0,
+        notes: formData.notes.value || 'None',
         submitted: Timestamp.now()
       }).then(a => {
       console.log("Submitted!");
