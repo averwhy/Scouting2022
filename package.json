@@ -1,6 +1,6 @@
 {
   "name": "scouting2022",
-  "version": "0.1.7",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -11,9 +11,13 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
     "config": "^3.3.7",
-    "firebase": "^9.6.5",
+    "firebase": "^9.6.7",
     "fs": "^0.0.1-security",
+    "humanize": "^0.0.9",
+    "humanize-list": "^1.0.1",
+    "perf_hooks": "^0.0.1",
     "react": "^17.0.2",
+    "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",

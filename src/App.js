@@ -8,6 +8,9 @@ import Entry from './pages/Entry';
 import Matches from './pages/Matches';
 import Teams from './pages/Teams';
 import Test from './pages/Test';
+import Submitted from './pages/Submitted';
+import PitEntry from './pages/PitEntry'
+import PitViewer from './pages/PitViewer';
 
 function App() {
   useEffect(() => {
@@ -18,9 +21,12 @@ function App() {
         <Navigation />
         <Routes>
             <Route exact path="/" element={<Entry/>} />
+            <Route path="/pitentry" element={<PitEntry/>} />
+            <Route path="/pitdata" element={<PitViewer/>} />
             <Route path="/matches" element={<Matches/>} />
             <Route path="/teams" element={<Teams/>} />
             <Route path="/test" element={<Test/>} />
+            <Route path="/submitted" element={<Submitted/>} />
         </Routes>
       </BrowserRouter>
     </div>
