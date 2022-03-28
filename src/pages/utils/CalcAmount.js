@@ -1,6 +1,6 @@
 import react from 'react';
 import database from './db';
-import CalcAmountError from  './Errors';
+import { CalcAmountError } from  './Errors';
 const db = new database("shrewsbury-real");
 
 class CalcAmount extends react.Component{

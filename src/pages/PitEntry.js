@@ -2,6 +2,7 @@ import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col, UncontrolledAlert} from "reactstrap";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import database from './utils/db';
+import { SubmitError } from './utils/Errors';
 import { useNavigate } from 'react-router';
 
 var db = new database("shrewsbury-pit");
@@ -15,13 +16,18 @@ const formData = Object({
   notes: 'None',
 })
 const PitEntry = (props) => {
-var navigate = useNavigate();
-function toViewer(){
-    navigate("/pitdata", {replace: true})
-}
+  const [disable, setDisable] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState('');
+  var navigate = useNavigate();
+  function toViewer(){
+      navigate("/pitdata", {replace: true})
+  }
   function submitForm(e){
     e.preventDefault();
     try {
+      setDisable(true)
+      setErrorMessage("")
+      throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
       addDoc(collection(db.db, "shrewsbury-pit"), {
         teamNumber: formData.teamNum.valueAsNumber,
         climber: formData.climber.checked,
@@ -36,6 +42,8 @@ function toViewer(){
       });
     } catch (e) {
       console.error("Error adding document: ", e);
+      setErrorMessage("Internal error has occured: " + e);
+      //setDisable(false);
     }
   }
 
@@ -135,10 +143,11 @@ function toViewer(){
             innerRef={(node) => formData.notes = node}
           />
         </FormGroup>
-        <Button type="submit" color="info">
+        <Button type="submit" color="info" disabled={disable}>
           Submit
         </Button>
-        <br/><br/>
+        <h6 style={{color: 'red'}}>{errorMessage}</h6>
+        <br/>
         <Button color="success" onClick={toViewer}>
             View Pit Data (hit submit first if you have any data)
         </Button>

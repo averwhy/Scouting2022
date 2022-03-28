@@ -2,7 +2,7 @@ import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col, UncontrolledAlert} from "reactstrap";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import database from './utils/db';
-import SubmitError from './utils/Errors';
+import { SubmitError } from './utils/Errors';
 import { useNavigate } from 'react-router';
 
 const dbcol = "shrewsbury-real";
@@ -276,7 +276,7 @@ const Entry = (props) => {
         <Button type="submit" color="info" disabled={disable}>
           Submit
         </Button>
-        <body style={{color: 'red'}}>{errorMessage}</body>
+        <h6 style={{color: 'red'}}>{errorMessage}</h6>
         <br/>
         <br/>
         <br/>
