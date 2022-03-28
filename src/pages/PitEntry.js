@@ -47,6 +47,7 @@ function toViewer(){
       <br/><br/>Observe their robot! Do they have a rat's nest of wires? Are any chains tensioned properly? What motors do they use?
       <br/>Ask questions! E.g. "What can you do in auto?" "How fast is your climber?" "What bar can you get to?" "How many goals can you usually get?"
       <br/><br/>If you need help find Avery!!!</UncontrolledAlert>
+      <UncontrolledAlert color="success">To view pit data, scroll to the bottom and click the green button.</UncontrolledAlert>
       <Form onSubmit={submitForm}>
         <h3>
           Pit Scouting Entry

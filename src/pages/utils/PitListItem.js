@@ -160,6 +160,12 @@ class PitListItem extends react.Component{
     if (listgroupItems.length === 0){ // Nothing was returned so we'll do a loading icon
       return ( <Spinner type='border' color='dark'>Loading...</Spinner> )
     }
+    listgroupItems.sort((a, b) => {
+      return a[1] - b[1]
+    });
+    collapseItems.sort((a, b) => {
+      return a[1] - b[1];
+    });
     var newListItems = listgroupItems.map((entry) => (
       // for this: entry[0] = it's ID (e.g. team138)
       // entry[1] = the raw team number

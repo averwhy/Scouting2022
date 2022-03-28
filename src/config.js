@@ -6,6 +6,8 @@ const config = {
     firebase_messagingSenderId: "336313340843",
     firebase_appId: "1:336313340843:web:c14d64c619b9c949c6b8ee",
     firebase_measurementId: "G-D4NBV84TMR",
+
+    database_collection: "shrewsbury-real"
 }
     
 export default config;

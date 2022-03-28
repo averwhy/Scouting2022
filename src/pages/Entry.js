@@ -2,6 +2,7 @@ import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col, UncontrolledAlert} from "reactstrap";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import database from './utils/db';
+import SubmitError from './utils/Errors';
 import { useNavigate } from 'react-router';
 
 const dbcol = "shrewsbury-real";
@@ -23,9 +24,14 @@ const formData = Object({
 })
 const Entry = (props) => {
   var navigate = useNavigate();
+  const [disable, setDisable] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState('');
   function submitForm(e){
     e.preventDefault();
     try {
+      setDisable(true)
+      setErrorMessage("")
+      throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
       addDoc(collection(db.db, dbcol), {
         teamNumber: formData.teamNum.valueAsNumber || 0,
         matchNumber: formData.matchNum.valueAsNumber || 0,
@@ -46,6 +52,8 @@ const Entry = (props) => {
       });
     } catch (e) {
       console.error("Error adding document: ", e);
+      setErrorMessage("Internal error has occured: " + e);
+      //setDisable(false);
     }
   }
 
@@ -265,9 +273,10 @@ const Entry = (props) => {
             innerRef={(node) => formData.notes = node}
           />
         </FormGroup>
-        <Button type="submit" color="info">
+        <Button type="submit" color="info" disabled={disable}>
           Submit
         </Button>
+        <body style={{color: 'red'}}>{errorMessage}</body>
         <br/>
         <br/>
         <br/>

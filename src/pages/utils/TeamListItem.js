@@ -102,7 +102,7 @@ class TeamListItem extends react.Component{
     var result = "";
     this.state.snapshot.forEach(entry => {
       if (entry.get("teamNumber") === teamNum){
-        result = result + "\n\n" + entry.get("notes");
+        result = result + "\n-" + entry.get("notes");
       }
     })
     return result;
@@ -127,7 +127,8 @@ class TeamListItem extends react.Component{
           this.combine_notes(tnum), //7
           this.entry_amount(tnum), //8
           this.total_points(tnum), //9
-          this.auto_move_data(tnum) //10
+          this.auto_move_data(tnum), //10
+          tnum //11
         ])
         addedTeams.push(tnum);
       }
@@ -146,7 +147,12 @@ class TeamListItem extends react.Component{
     if (listgroupItems.length === 0){ // Nothing was returned so we'll do a loading icon
       return ( <Spinner type='border' color='dark'>Loading...</Spinner> )
     }
-
+    listgroupItems.sort((a, b) => {
+      return a[1] - b[1]
+    });
+    collapseItems.sort((a, b) => {
+      return a[11] - b[11];
+    });
     var newListItems = listgroupItems.map((entry) => (
       // for this: entry[0] = it's ID (e.g. team138)
       // entry[1] = the raw team number
