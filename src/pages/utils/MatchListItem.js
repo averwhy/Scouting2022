@@ -14,6 +14,11 @@ class MatchListItem extends react.Component{
   }
 
   componentDidMount(){
+    this.refresh_data()
+  }
+
+  refresh_data(){
+    this.setState({snapshot: []})
     db.getAll().then((d) => {
       this.setState({snapshot: d})
     })

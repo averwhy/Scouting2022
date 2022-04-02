@@ -1,4 +1,5 @@
 import react from 'react';
+import ReactDOM from "react-dom";
 import database from './db';
 import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse, Spinner } from 'reactstrap';
 var humanize = require("humanize");
@@ -14,9 +15,18 @@ class TeamListItem extends react.Component{
   }
 
   componentDidMount(){
+    this.refresh_data()
+  }
+
+  refresh_data(){
+    this.setState({snapshot: []})
     db.getAll().then((d) => {
       this.setState({snapshot: d})
     })
+  }
+
+  getInstance(){
+    return ReactDOM.findDOMNode(this);
   }
 
   entry_amount(teamNum){
