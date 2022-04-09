@@ -4,7 +4,7 @@ import database from './db';
 import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse, Spinner } from 'reactstrap';
 var humanize = require("humanize");
 var humanizeList = require('humanize-list')
-const db = new database("shrewsbury-real");
+const db = new database("wpi");
 class TeamListItem extends react.Component{
   
   constructor(props){

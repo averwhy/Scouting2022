@@ -1,7 +1,7 @@
 import react from 'react';
 import database from './db';
 import { CalcAmountError } from  './Errors';
-const db = new database("shrewsbury-real");
+const db = new database("wpi");
 
 class CalcAmount extends react.Component{
 
@@ -41,9 +41,6 @@ class CalcAmount extends react.Component{
 
     render(){
         var amount = this.calc_amount();
-        if (amount === 0){ // Nothing was returned
-            return (<br/>)
-          }
         return (
             <h6>
                 Showing {amount} entries
