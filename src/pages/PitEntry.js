@@ -2,7 +2,7 @@ import React from 'react';
 import {Form, FormGroup, Label, Input, Button, Container, Col, UncontrolledAlert} from "reactstrap";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import database from './utils/db';
-//import { SubmitError } from './utils/Errors';
+import { SubmitError } from './utils/Errors';
 import { useNavigate } from 'react-router';
 
 var db = new database("wpi-pit");
@@ -27,7 +27,7 @@ const PitEntry = (props) => {
     try {
       setDisable(true)
       setErrorMessage("")
-      //throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
+      throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
       addDoc(collection(db.db, "wpi-pit"), {
         teamNumber: formData.teamNum.valueAsNumber,
         climber: formData.climber.checked,
@@ -43,7 +43,7 @@ const PitEntry = (props) => {
     } catch (e) {
       console.error("Error adding document: ", e);
       setErrorMessage("Internal error has occured: " + e);
-      setDisable(false);
+      //setDisable(false);
     }
   }
 

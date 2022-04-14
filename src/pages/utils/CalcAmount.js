@@ -6,23 +6,29 @@ const db = new database("wpi");
 class CalcAmount extends react.Component{
 
     constructor(props){
-        super(props);
-        this.state = {
-          snapshot: []
-        };
-        if (!(['team','match'].includes(props.type))){
-          // invalid type passed
-          throw new CalcAmountError("Invalid type passed to CalcAmount component, type must be either 'team' or 'match'")
-        }
-        this.type = props.type
+      super(props);
+      this.state = {
+        snapshot: []
+      };
+      if (!(['team','match'].includes(props.type))){
+        // invalid type passed
+        throw new CalcAmountError("Invalid type passed to CalcAmount component, type must be either 'team' or 'match'")
+      }
+      this.type = props.type
     }
 
     componentDidMount(){
-        db.getAll().then((d) => {
-          this.setState({snapshot: d})
-        })
+      db.getAll().then((d) => {
+        this.setState({snapshot: d})
+      })
     }
 
+    refresh_data(){
+      this.setState({snapshot: []})
+      db.getAll().then((d) => {
+        this.setState({snapshot: d})
+      })
+    }
     
     calc_amount(){
         // gets the amount of times a team has been scouted on (how many times its in the database)

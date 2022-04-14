@@ -1,8 +1,8 @@
 import React from 'react';
-import {Form, FormGroup, Label, Input, Button, Container, Col, UncontrolledAlert} from "reactstrap";
+import {Form, FormGroup, Label, Input, Button, Container, Col } from "reactstrap";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import database from './utils/db';
-//import { SubmitError } from './utils/Errors';
+import { SubmitError } from './utils/Errors';
 import { useNavigate } from 'react-router';
 
 const dbcol = "wpi";
@@ -31,7 +31,7 @@ const Entry = (props) => {
     try {
       setDisable(true)
       setErrorMessage("")
-      //throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
+      throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
       addDoc(collection(db.db, dbcol), {
         teamNumber: formData.teamNum.valueAsNumber || 0,
         matchNumber: formData.matchNum.valueAsNumber || 0,
@@ -53,18 +53,18 @@ const Entry = (props) => {
     } catch (e) {
       console.error("Error adding document: ", e);
       setErrorMessage("Internal error has occured: " + e);
-      setDisable(false);
+      //setDisable(false);
     }
   }
 
   return (
     <Container>
-      <UncontrolledAlert color="info">Hey! Here are some important tips for scouting.
+      {/* <UncontrolledAlert color="info">Hey! Here are some important tips for scouting.
       <br/>1. Always stay focused on your bot. We want accurate data to pick good teammates!
       <br/>2. Doublecheck your data before submitting.
       <br/>3. If there's any thing you think should be added, add that in the last field under 'Notes'.
       <br/>Also, remember that we can use this data to impress potential alliance partners.
-      <br/>If you need help find Avery!!!</UncontrolledAlert>
+      <br/>If you need help find Avery!!!</UncontrolledAlert> */}
       <Form onSubmit={submitForm}>
         <h3>
           Scouting Entry

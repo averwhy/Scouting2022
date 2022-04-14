@@ -5,9 +5,10 @@ import CalcAmount from './utils/CalcAmount';
 
 const Teams = (props) => {
   var TLI = React.createRef();
+  var CA = React.createRef();
   function doRefresh(){
-    if (!(TLI.current === null)){
-    TLI.current.refresh_data()
+    if (!(TLI.current === null || CA.current === null)){
+      TLI.current.refresh_data()
     } else {
       // Component isn't loaded yet
       return
@@ -20,7 +21,7 @@ const Teams = (props) => {
     <Button type="submit" color="success" onClick={doRefresh} style={{float: "right"}}>
         Refresh
     </Button>
-    <CalcAmount type='team'/>
+    <CalcAmount type='team' ref={CA}/>
     <ListGroup flush>
       <TeamListItem ref={TLI}/>
     </ListGroup>
