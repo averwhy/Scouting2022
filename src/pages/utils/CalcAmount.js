@@ -1,7 +1,8 @@
 import react from 'react';
 import database from './db';
 import { CalcAmountError } from  './Errors';
-const db = new database("wpi");
+import config from './../../config';
+const db = new database(config.database_collection);
 
 class CalcAmount extends react.Component{
 

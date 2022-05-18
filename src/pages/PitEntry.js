@@ -5,7 +5,8 @@ import database from './utils/db';
 import { SubmitError } from './utils/Errors';
 import { useNavigate } from 'react-router';
 
-var db = new database("wpi-pit");
+import config from './../../config';
+const db = new database(config.database_collection + config.pit_suffix);
 
 const formData = Object({
   teamNum: 0,
@@ -27,7 +28,9 @@ const PitEntry = (props) => {
     try {
       setDisable(true)
       setErrorMessage("")
-      throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
+      if (config.disable_submitting){
+        throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
+      }      
       addDoc(collection(db.db, "wpi-pit"), {
         teamNumber: formData.teamNum.valueAsNumber,
         climber: formData.climber.checked,

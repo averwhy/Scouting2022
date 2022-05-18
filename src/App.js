@@ -21,8 +21,8 @@ function App() {
         <Navigation />
         <Routes>
             <Route exact path="/" element={<Entry/>} />
-            <Route path="/pitentry" element={<PitEntry/>} />
-            <Route path="/pitdata" element={<PitViewer/>} />
+            {/* <Route path="/pitentry" element={<PitEntry/>} />
+            <Route path="/pitdata" element={<PitViewer/>} /> */}
             <Route path="/matches" element={<Matches/>} />
             <Route path="/teams" element={<Teams/>} />
             <Route path="/test" element={<Test/>} />

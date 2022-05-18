@@ -10,10 +10,11 @@ const tabs = [{
   },{
     route: "/teams",
     label: "Team Data"
-  },{
-    route: "/pitentry",
-    label: "Pit Data Entry"
-  }]
+  } //,{
+  //   route: "/pitentry",
+  //   label: "Pit Data Entry"
+  // }
+  ]
   
 const Navigation = (props) => {
 	return (

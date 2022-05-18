@@ -8,12 +8,11 @@
 
 This is our Scouting website for the 2022 game Rapid React.
 
-## Frontend
-Made with React.js and stuff
+### Frontend
+Made with React.js and Reactstrap for the form component
 
-## Backend
+### Backend
 We use Firebase for our database
-
 
 
 ### How to run
@@ -33,3 +32,4 @@ export default config;
 ```
 You'll need a firebase project set up to fill out the values accordingly.
 Then, run `npm i`. After that you should be all set to run `npm run start` to run the website locally.
+If theres issues talk to a mentor and they can put you in touch with me.
