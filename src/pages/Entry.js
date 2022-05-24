@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 
 import config from './../config';
 const db = new database(config.database_collection);
+const dbcol = config.database_collection
 
 const formData = Object({
   teamNum: 0,

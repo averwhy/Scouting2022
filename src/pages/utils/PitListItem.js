@@ -1,7 +1,7 @@
 import react from 'react';
 import database from './db';
 import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse, Spinner } from 'reactstrap';
-import config from './../../config';
+import config from '../../config';
 const db = new database(config.database_collection + config.pit_suffix);
 class PitListItem extends react.Component{
   

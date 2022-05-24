@@ -5,7 +5,7 @@ import database from './utils/db';
 import { SubmitError } from './utils/Errors';
 import { useNavigate } from 'react-router';
 
-import config from './../../config';
+import config from '../config';
 const db = new database(config.database_collection + config.pit_suffix);
 
 const formData = Object({

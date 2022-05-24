@@ -9,8 +9,9 @@ import Matches from './pages/Matches';
 import Teams from './pages/Teams';
 import Test from './pages/Test';
 import Submitted from './pages/Submitted';
-import PitEntry from './pages/PitEntry'
-import PitViewer from './pages/PitViewer';
+// import PitEntry from './pages/PitEntry'
+// import PitViewer from './pages/PitViewer';
+// deprecated ^^
 
 function App() {
   useEffect(() => {

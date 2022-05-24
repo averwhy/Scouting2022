@@ -2,9 +2,9 @@ import react from 'react';
 import ReactDOM from "react-dom";
 import database from './db';
 import { Card, CardBody, ListGroupItem, ListGroupItemHeading, UncontrolledCollapse, Spinner } from 'reactstrap';
+import config from '../../config';
 var humanize = require("humanize");
 var humanizeList = require('humanize-list')
-import config from './../../config';
 const db = new database(config.database_collection);
 class TeamListItem extends react.Component{
   
