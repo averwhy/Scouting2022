@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import config from './../config';
 const db = new database(config.database_collection);
 const dbcol = config.database_collection
+const disabled = config.disable_submitting
 
 const formData = Object({
   teamNum: 0,
@@ -32,7 +33,7 @@ const Entry = (props) => {
     try {
       setDisable(true)
       setErrorMessage("")
-      if (config.disable_submitting){
+      if (disabled){
         throw new SubmitError("Submitting is disabled as there is no active competition.") // eslint-disable-next-line
       }
       addDoc(collection(db.db, dbcol), {
