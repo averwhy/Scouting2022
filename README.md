@@ -1,4 +1,4 @@
-![maintained](https://img.shields.io/maintenance/yes/2022?style=flat-square)
+![maintained](https://img.shields.io/maintenance/no/2022?style=flat-square)
 ![version](https://img.shields.io/github/package-json/v/averwhy/Scouting2022?style=flat-square)
 ![react](https://img.shields.io/npm/v/react?color=61dbfb&label=react&style=flat-square)
 ![updated](https://img.shields.io/github/last-commit/averwhy/scouting2022?style=flat-square)
