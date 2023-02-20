@@ -21,7 +21,7 @@ const Navigation = (props) => {
     <div>
       <nav className="navbar navbar-expand-md navbar-light sticky-top" 	role="navigation">
         <div className="container-fluid">
-            <a className="navbar-brand" href="/">Entropy 138 Scouting</a>
+            <a className="navbar-brand" href="/">CHAOS 131 Scouting</a>
         </div>
       </nav>
         {props.children}

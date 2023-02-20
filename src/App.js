@@ -15,7 +15,7 @@ import Submitted from './pages/Submitted';
 
 function App() {
   useEffect(() => {
-    document.title = "138 Scouting"; }, []);
+    document.title = "131 Scouting"; }, []);
   return (
     <div>
       <BrowserRouter>
